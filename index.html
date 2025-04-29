@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Audio Samples from StyleTTS 2</title>
+		<style>
+			div {
+			margin-bottom: 32px;
+			}
+			
+			.github.td {
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+
+			
+			#toc_container {
+			background: #f9f9f9 none repeat scroll 0 0;
+			border: 1px solid #aaa;
+			display: table;
+			font-size: 95%;
+			padding-top: 20px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-bottom: 8px;
+			width: auto;
+			}
+			
+			#toc_container ul  {
+			  list-style: outside none none !important; margin-left: -40px;
+			}
+			
+			.id {
+			width: 245px;
+			}
+			
+			.ood {
+			width: 280px;
+			}
+			
+			.first-col {
+			padding-right: 20px;
+			white-space: nowrap;
+			}
+				
+		  .text {
+			font-style: italic;
+			color: #666666;
+		  }
+			
+		</style>
+	</head>
+	
+	<body>
+		<article>
+			<header>
+				<h1>The Drum Machine of Tao</h1>
+			</header>
+		</article>
+		
+		<div style="margin-bottom: 16px;" class="github">
+			<table>
+					<tbody>
+						<tr>
+							<td><a href="">[arXiv]</a></td>
+							<td><a href="">[GitHub Repo]</a></td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+		
+		<div>
+			<b>Abstract: </b>The Drum Machine of Tao <i>Tao</i> is a machine learning-based digital system that returns a sampled drum loop in audio waveform to sequencer parameters and one-shot percussive samples, restoring low-level editability to the drum loops that would otherwise be frozen once sampled. The philosophy behind the design of this drum machine is inspired from Taoism - that which returns to its primal state is the great Way of Tao. In this paper, we introduce the system design of <i>Tao</i> which comprises a state-of-the-art drum source separation model, a sequencer parameter estimation model, and a bespoke one-shot sample extraction algorithm that leverages differentiable audio synthesis.
+			<p></p>
+			<table>
+				<tbody>
+				  <tr>
+					<th>input drum loop</th>
+					<th>extracted kick</th>
+					<th>extracted snare</th>
+					<th>extracted hihats</th>
+				  </tr>
+				  <tr>
+					<td><audio controls preload="none"><source src="wavs/abstract/styletts2.mp3"></audio></td>
+					<td><audio controls preload="none"><source src="wavs/abstract/jets.mp3"></audio></td>
+					<td><audio controls preload="none"><source src="wavs/abstract/vits.mp3"></audio></td>
+					<td><audio controls preload="none"><source src="wavs/abstract/styletts.mp3"></audio></td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div>
+			<p>This page contains a set of audio samples in support of the paper. Some examples are randomly selected directly from the sets we used for evaluation. </p>
+			<p>All one-shot samples were unseen during training. </p>
+			<p>For more samples, you can download our metadata that contains all audios used for evaluations <a href="#">here</a>.</p>
+		</div>
+		
+		
+		<h2>Contents</h2>
+			<div id="toc_container" style="padding-top:0px;">
+			<ul>
+				<li><a href="#lj_id"> 1. Single-Speaker (LJSpeech, In-Distribution Texts)
+				<li><a href="#lj_ood"> 2. Single-Speaker (LJSpeech, Out-Of-Distribution Texts)
+				<li><a href="#vctk"> 3. Multi-Speaker (VCTK)
+				<li><a href="#libri"> 4. Zero-shot Speaker Adaptation (LibriTTS)
+				<li><a href="#long"> 5. Longform Narration
+				<li><a href="#emo"> 6. Speech Expressiveness
+				<li><a href="#var"> 7. Speech Diversity
+				<li><a href="#ab"> 8. Ablation Study
+
+			</ul>
+		</div>
+		
+		<div>
+			<a name="lj_id"><h2>1. Single-Speaker (LJSpeech, In-Distribution Texts)</h2></a>
+			<hr>
+			<p></p>
+			
+			<p><b>Text: </b><span class="text">After the construction and action of the machine had been explained, the doctor asked the governor what kind of men he had commanded at Goree,</span></p>
+			<table>
+				<tbody>
+				  <tr>
+					<th>Ground Truth</th>
+					<th>StyleTTS 2</th>
+					<th>NaturalSpeech</th>
+					<th>JETS</th>
+					<th>VITS</th>
+					<th>StyleTTS</th>
+				  </tr>
+				  <tr>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00005.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00005.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00005.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00005.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00005.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00005.wav"></audio></td>
+				  </tr>
+				</tbody>
+			</table>
+			
+			<p><b>Text: </b><span class="text">The lax discipline maintained in Newgate was still further deteriorated by the presence of two other classes of prisoners who ought never to have been inmates of such a jail.</span></p>
+			<table>
+				<tbody>
+				  <tr>
+					<th>Ground Truth</th>
+					<th>StyleTTS 2</th>
+					<th>NaturalSpeech</th>
+					<th>JETS</th>
+					<th>VITS</th>
+					<th>StyleTTS</th>
+				  </tr>
+				  <tr>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00004.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00004.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00004.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00004.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00004.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00004.wav"></audio></td>
+				  </tr>
+				</tbody>
+			</table>
+
+			<p><b>Text: </b><span class="text">Maltby and Co. would issue warrants on them deliverable to the importer, and the goods were then passed to be stored in neighboring warehouses.</span></p>
+			<table>
+				<tbody>
+				  <tr>
+					<th>Ground Truth</th>
+					<th>StyleTTS 2</th>
+					<th>NaturalSpeech</th>
+					<th>JETS</th>
+					<th>VITS</th>
+					<th>StyleTTS</th>
+				  </tr>
+				  <tr>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00003.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00003.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00003.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00003.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00003.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00003.wav"></audio></td>
+				  </tr>
+				</tbody>
+			</table>
+			
+			
+			<p><b>Text: </b><span class="text">it is not possible to state with scientific certainty that a particular small group of fibers come from a certain piece of clothing.</span></p>
+			<table>
+				<tbody>
+				  <tr>
+					<th>Ground Truth</th>
+					<th>StyleTTS 2</th>
+					<th>NaturalSpeech</th>
+					<th>JETS</th>
+					<th>VITS</th>
+					<th>StyleTTS</th>
+				  </tr>
+				  <tr>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00001.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00001.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00001.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00001.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00001.wav"></audio></td>
+					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00001.wav"></audio></td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+
+		
+	</body>
+	
+
+</html>
