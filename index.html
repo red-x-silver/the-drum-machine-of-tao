@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Audio Samples from StyleTTS 2</title>
+		<title>The drum machine of Tao</title>
 		<style>
 			div {
 			margin-bottom: 32px;
@@ -62,7 +62,7 @@
 					<tbody>
 						<tr>
 							<td><a href="">[arXiv]</a></td>
-							<td><a href="">[GitHub Repo]</a></td>
+							<td><a href="https://github.com/red-x-silver/tao">[GitHub Repo]</a></td>
 						</tr>
 					</tbody>
 			</table>
@@ -99,33 +99,31 @@
 		<h2>Contents</h2>
 			<div id="toc_container" style="padding-top:0px;">
 			<ul>
-				<li><a href="#lj_id"> 1. Single-Speaker (LJSpeech, In-Distribution Texts)
-				<li><a href="#lj_ood"> 2. Single-Speaker (LJSpeech, Out-Of-Distribution Texts)
-				<li><a href="#vctk"> 3. Multi-Speaker (VCTK)
-				<li><a href="#libri"> 4. Zero-shot Speaker Adaptation (LibriTTS)
-				<li><a href="#long"> 5. Longform Narration
-				<li><a href="#emo"> 6. Speech Expressiveness
-				<li><a href="#var"> 7. Speech Diversity
-				<li><a href="#ab"> 8. Ablation Study
+				<li><a href="#eval-random"> 1. Evaluation results on the random-rhythm testing set
+				<li><a href="#audio-random"> 2. Audio samples from the random-rhythm testing set
+				<li><a href="#eval-prior"> 3. Evaluation results on the prior-rhythm testing set
+				<li><a href="#audio-prior"> 4. Audio samples from the prior-rhythm testing set
+				<li><a href="#audio-real"> 5. Audio samples from non-synthesized drum loops
+	
 
 			</ul>
 		</div>
 		
 		<div>
-			<a name="lj_id"><h2>1. Single-Speaker (LJSpeech, In-Distribution Texts)</h2></a>
+			<a name="eval-random"><h2>1. Evaluation results on the random-rhythm testing set</h2></a>
 			<hr>
 			<p></p>
 			
-			<p><b>Text: </b><span class="text">After the construction and action of the machine had been explained, the doctor asked the governor what kind of men he had commanded at Goree,</span></p>
+			<p><b>Random-rhythm</b>testing set: <span class="text">The testing set synthesized using randomly sampled step vectors following no prior rhythmic patterns.</span></p>
 			<table>
 				<tbody>
 				  <tr>
-					<th>Ground Truth</th>
-					<th>StyleTTS 2</th>
-					<th>NaturalSpeech</th>
-					<th>JETS</th>
-					<th>VITS</th>
-					<th>StyleTTS</th>
+					<th>Input drum loop</th>
+					<th>extracted kick</th>
+					<th>extracted snare</th>
+					<th>extracted hihats</th>
+					<th>reconstruted drum loop</th>
+
 				  </tr>
 				  <tr>
 					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00005.wav"></audio></td>
@@ -133,77 +131,10 @@
 					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00005.wav"></audio></td>
 					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00005.wav"></audio></td>
 					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00005.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00005.wav"></audio></td>
 				  </tr>
 				</tbody>
 			</table>
-			
-			<p><b>Text: </b><span class="text">The lax discipline maintained in Newgate was still further deteriorated by the presence of two other classes of prisoners who ought never to have been inmates of such a jail.</span></p>
-			<table>
-				<tbody>
-				  <tr>
-					<th>Ground Truth</th>
-					<th>StyleTTS 2</th>
-					<th>NaturalSpeech</th>
-					<th>JETS</th>
-					<th>VITS</th>
-					<th>StyleTTS</th>
-				  </tr>
-				  <tr>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00004.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00004.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00004.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00004.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00004.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00004.wav"></audio></td>
-				  </tr>
-				</tbody>
-			</table>
-
-			<p><b>Text: </b><span class="text">Maltby and Co. would issue warrants on them deliverable to the importer, and the goods were then passed to be stored in neighboring warehouses.</span></p>
-			<table>
-				<tbody>
-				  <tr>
-					<th>Ground Truth</th>
-					<th>StyleTTS 2</th>
-					<th>NaturalSpeech</th>
-					<th>JETS</th>
-					<th>VITS</th>
-					<th>StyleTTS</th>
-				  </tr>
-				  <tr>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00003.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00003.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00003.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00003.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00003.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00003.wav"></audio></td>
-				  </tr>
-				</tbody>
-			</table>
-			
-			
-			<p><b>Text: </b><span class="text">it is not possible to state with scientific certainty that a particular small group of fibers come from a certain piece of clothing.</span></p>
-			<table>
-				<tbody>
-				  <tr>
-					<th>Ground Truth</th>
-					<th>StyleTTS 2</th>
-					<th>NaturalSpeech</th>
-					<th>JETS</th>
-					<th>VITS</th>
-					<th>StyleTTS</th>
-				  </tr>
-				  <tr>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00001.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00001.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00001.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00001.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00001.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS/00001.wav"></audio></td>
-				  </tr>
-				</tbody>
-			</table>
+	
 		</div>
 
 		
