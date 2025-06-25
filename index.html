@@ -7,6 +7,7 @@
 			div {
 			margin-bottom: 32px;
 		 	font-family: Arial, sans-serif;
+			max-width:80%
 			}
 			
 			.github.td {
@@ -87,12 +88,26 @@
 		
 		<div>
 			<p><img src="img/tao-banner.png" alt="banner img of Tao" /></p>
-			<b>Abstract: </b> <i>Tao</i> is a machine learning-based digital system that returns a sampled drum loop in audio waveform to sequencer parameters and one-shot percussive samples, restoring low-level editability to the drum loops that would otherwise be frozen once sampled. The philosophy behind the design of this drum machine is inspired from Taoism - that which returns to its primal state is the great Way of Tao. In this paper, we introduce the system design of <i>Tao</i> which comprises a state-of-the-art drum source separation model, a sequencer parameter estimation model, and a bespoke one-shot sample extraction algorithm that leverages differentiable audio synthesis.
-			
-			<p style="font-weight: bold;"> 
-				The actual interface of <i>Tao</i> is under construction, you are invited to imagine an interactive web-based regular drum machine + sequencer interface which probably looks like <a href="https://roland50.studio/">this</a>, but with an additional ⇪drum loop audio file upload section⇪.
+			<b>❍ What we have done:</b> 
+			<p> In this work we present <i>Tao</i> , a "symmetric" drum machine capable of both synthesizing audio waveforms from sequencer parameters as well as inferring sequencer parameters from audio waveforms.</p>
+			<p> Implementation for "sequencer parameters → audio waveforms" synthesis is not a standing problem; the main challenge of <i>Tao</i>  lies in the reverse direction—"audio waveforms → sequencer parameter"—which we refer to as the sequencer parameter estimation problem. We leverage machine learning to assist with this; see the paper for technical details.</p>
+			<b>❍ Why:</b> 
+			<p> Recovering sequencer parameters from a sampled drum loop in audio waveform can restore low-level editability to loops that would otherwise remain frozen as audio. The philosophy behind this system draws inspiration from Taoism: that which returns to its primal state follows the great Way of Tao. </p>
+			<b>❍ btw:</b> 
+			<p>Sequencer parameters (minimal): 
+				<ul>
+					<li><a> a global tempo</a>
+					<li><a> step vectors per each percussive track (e.g. a step vector for the kick drum may look like [1,0,0,0,1,0,0,0])</a>
+					<li><a> one-shot samples per each percussive track </a>
+				</ul>
+			<b>❍ On another note,</b> 
+			<p> 
+				While the interface of <i>Tao</i> is still under construction, you are invited to imagine an interactive web-based regular drum machine + sequencer interface which probably looks like <a href="https://roland50.studio/">this</a>, but with an additional ⇪drum loop audio file upload section⇪.
 			</p>
-			<p style="font-weight: bold;">See below for examples of the raw output of drum loops processed/rigged by <i>Tao</i>. </p>
+
+			
+			<b> ❍ Finally: </b> 
+			<p>See below for examples of sequencer parameters recovered by <i>Tao</i> from input drum loops. Desktop recommended for optimal display.</p>
 			<h4>✻ Example I:</h4>
 			<p style="font-weight: bold;">input:</p>
 				<table>
@@ -122,19 +137,19 @@
 					<th>estimated step vector</th>
 				  </tr>
 				  <tr>
-					<th><i>kick:</i></th>
+					<th>🀙 kick:</th>
 					<td><audio controls preload="none"><source src="wavs/loop111/kick_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ○ ○ ○ ● ○ ○ ○</td>
 				  </tr>
 
 				  <tr>
-					<th><i>snare:</i></th>
+					<th>🀄︎ snare: </th>
 					<td><audio controls preload="none"><source src="wavs/loop111/snare_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">○ ○ ○ ○ ● ● ○ ○</td>
 				  </tr>
 
 				  <tr>
-					<th><i>hihats:</i></th>
+					<th>🀑 hihats: </th>
 					<td><audio controls preload="none"><source src="wavs/loop111/hh_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">○ ● ● ● ● ● ● ●</td>
 				  </tr>
@@ -143,15 +158,13 @@
 
 				  <tr>
 					<th> reconstruction </th>
-					<td><audio controls preload="none"><source src="wavs/loop111/reconstructed_loop.wav"></audio></td>
+					<td><audio controls preload="none"><source src="wavs/loop111/reconstructed_loop.wav"></audio></td>				
 				</tr>
-
-
 			  <tr>
 
 				</tbody>
 			</table>
-
+			<p>"reconstruction" is the drum loop audio synthesized using the estimated sequencer parameters, provided for a quick assessment on the estimation quality.</p>
 
 
 			<h4>✻✻ Example II:</h4>
@@ -183,19 +196,19 @@
 					<th>estimated step vector</th>
 				  </tr>
 				  <tr>
-					<th><i>kick:</i></th>
+					<th>🀙 kick: </th>
 					<td><audio controls preload="none"><source src="wavs/loop998/kick_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ○ ● ● ○ ○ ○ ○</td>
 				  </tr>
 
 				  <tr>
-					<th><i>snare:</i></th>
+					<th>🀄︎ snare: </th>
 					<td><audio controls preload="none"><source src="wavs/loop998/snare_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ● ● ○ ● ● ●</td>
 				  </tr>
 
 				  <tr>
-					<th><i>hihats:</i></th>
+					<th>🀑 hihats: </th>
 					<td><audio controls preload="none"><source src="wavs/loop998/hh_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ○ ○ ● ● ○ ○</td>
 				  </tr>
@@ -212,6 +225,7 @@
 
 				</tbody>
 			</table>
+			<p>"reconstruction" is the drum loop audio synthesized using the estimated sequencer parameters, provided for a quick assessment on the estimation quality.</p>
 
 			<h4>✻✻✻ Example III:</h4>
 			<p style="font-weight: bold;">input:</p>
@@ -242,19 +256,19 @@
 					<th>estimated step vector</th>
 				  </tr>
 				  <tr>
-					<th><i>kick:</i></th>
+					<th>🀙 kick:</th>
 					<td><audio controls preload="none"><source src="wavs/loop1140/kick_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ○ ○ ● ○ ○ ○ ○</td>
 				  </tr>
 
 				  <tr>
-					<th><i>snare:</i></th>
+					<th>🀄︎ snare: </th>
 					<td><audio controls preload="none"><source src="wavs/loop1140/snare_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ○ ● ● ○ ○ ● ●</td>
 				  </tr>
 
 				  <tr>
-					<th><i>hihats:</i></th>
+					<th>🀑 hihats: </th>
 					<td><audio controls preload="none"><source src="wavs/loop1140/hh_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ● ● ● ● ● ●</td>
 				  </tr>
@@ -269,7 +283,7 @@
 
 				</tbody>
 			</table>
-
+			<p>"reconstruction" is the drum loop audio synthesized using the estimated sequencer parameters, provided for a quick assessment on the estimation quality.</p>
 
 			<h4>✻✻✻✻ Example IV:</h4>
 			<p style="font-weight: bold;">input:</p>
@@ -300,19 +314,19 @@
 					<th>estimated step vector</th>
 				  </tr>
 				  <tr>
-					<th><i>kick:</i></th>
+					<th>🀙 kick:</th>
 					<td><audio controls preload="none"><source src="wavs/loop30/kick_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ● ● ● ● ● ●</td>
 				  </tr>
 
 				  <tr>
-					<th><i>snare:</i></th>
+					<th>🀙 kick:</th>
 					<td><audio controls preload="none"><source src="wavs/loop30/snare_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">○ ○ ○ ● ○ ○ ○ ●</td>
 				  </tr>
 
 				  <tr>
-					<th><i>hihats:</i></th>
+					<th>🀑 hihats: </th>
 					<td><audio controls preload="none"><source src="wavs/loop30/hh_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ● ● ● ● ● ●</td>
 				  </tr>
@@ -327,6 +341,7 @@
 
 				</tbody>
 			</table>
+			<p>"reconstruction" is the drum loop audio synthesized using the estimated sequencer parameters, provided for a quick assessment on the estimation quality.</p>
 
 			<h4>✻✻✻✻✻ Example V:</h4>
 			<p style="font-weight: bold;">input:</p>
@@ -357,19 +372,19 @@
 					<th>estimated step vector</th>
 				  </tr>
 				  <tr>
-					<th><i>kick:</i></th>
+					<th>🀙 kick:</th>
 					<td><audio controls preload="none"><source src="wavs/loop1798/kick_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ○ ○ ○ ● ○ ○ ○</td>
 				  </tr>
 
 				  <tr>
-					<th><i>snare:</i></th>
+					<th>🀄︎ snare: </th>
 					<td><audio controls preload="none"><source src="wavs/loop1798/snare_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ○ ● ○ ○ ● ●</td>
 				  </tr>
 
 				  <tr>
-					<th><i>hihats:</i></th>
+					<th>🀑 hihats: </th>
 					<td><audio controls preload="none"><source src="wavs/loop1798/hh_one_shot.wav"></audio></td>
 					<td style="font-size: 30px;">● ● ● ● ● ○ ● ●</td>
 				  </tr>
@@ -384,24 +399,21 @@
 
 				</tbody>
 			</table>
-
+			<p>"reconstruction" is the drum loop audio synthesized using the estimated sequencer parameters, provided for a quick assessment on the estimation quality.</p>
 
 		</div>
 		
 
+		<div><b>❍ Computational evaluation</b> </div>
 		
-		
-		<h3>Computational evaluation</h3>
-			<div id="toc_container" style="padding-top:0px;">
+
+			<div id="toc_container" style="padding-top:0px; max-width: 80%;">
 				<div>
-					<p>There are different metrics for different components as each component in <i>Tao</i> handles a different subproblem.</p>
+					<p>There are different computational metrics for different components as each component in <i>Tao</i> handles a different subproblem.</p>
 					<p>We have synthesized two testing drum loops sets fom <a href="https://zenodo.org/records/4687854">Freesound One-Shot Percussive Sounds</a> - a random-rhythm testing set and a prior-rhythm testing set.  </p>
 					<p><b>Random-rhythm</b> testing set (<i>Random</i>): the testing set synthesized using randomly sampled step vectors following no prior rhythmic patterns.</p>
 					<p><b>Prior-rhythm</b> testing set (<i>Prior</i>): the testing set synthesized using prior step vector collections (one collection for each percussive track), which are prepared by manual annotation from invited professional drummers and producers. </p>
 					<p>All one-shot samples in the testing set were unseen during training. </p>
-
-
-
 				</div>
 			<ul>
 				<li><a href="#eval-dss"> 1. Evaluation results of the drum source separation model</a>
@@ -517,7 +529,7 @@
 					<td>SI-SDR (Prior) </td>
 					<td>40.62 </td>
 					<td>20.31 </td>
-					<td>20.31 </td>
+					<td>20.31(?) </td>
 				  </tr>
 				  <tr>
 					<td>SDR (Random) </td>
@@ -533,9 +545,12 @@
 				  </tr>
 				</tbody>
 			</table>
+		</div>
 
-
-	
+		<div><b>❍ Dataset used for training the sequencer parameter estimation model: </b> 
+		<p>With no sequencer-info annotated drum loops dataset available in the public domain, we design a data synthesis pipeline in <i>Tao</i> utilizing the publicly available one-shot sample dataset <a href="https://zenodo.org/records/4687854">Freesound One-Shot Percussive Sounds</a>. </p>
+		<p>We synthesize drum loops using the one-shot samples and randomly generated step vectors and tempo.</p>
+		<p>The synthesis pipeline is built on 1D convolution which is differentiable and parallelizable; theoretically infinitely many annotated drum loops can be synthesized during training on-the-fly.</p>
 		</div>
 
 		
