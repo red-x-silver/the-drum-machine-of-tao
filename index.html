@@ -112,8 +112,8 @@
 			<p>Sequencer parameters (minimal): 
 				<ul>
 					<li><a> a global tempo</a>
-					<li><a> step vectors per each percussive track (e.g. a step vector for the kick drum may look like [1,0,0,0,1,0,0,0])</a>
-					<li><a> one-shot samples per each percussive track </a>
+					<li><a> step vectors per each percussive stem (e.g. a step vector for the kick drum may look like [1,0,0,0,1,0,0,0])</a>
+					<li><a> one-shot samples per each percussive stem </a>
 				</ul>
 			<b>❍ On another note,</b> 
 			<p> 
@@ -564,14 +564,22 @@
 		<p>The synthesis pipeline is built on 1D convolution which is differentiable and parallelizable; theoretically infinitely many annotated drum loops can be synthesized during training on-the-fly.</p>
 		</div>
 
+		<div><b>❍ Undergoing works</b> 
+			<ul>
+				<li><a> Upgrade the sequencer from 8-step to 16-step</a>
+				<li><a> Introduce per-stem velocity into the sequencer parameter space</a>
+			</ul>
+		</div>
+
 		<div><b>❍ Ethical Standards</b> 
 			<p>This paper does not involve experiments with human or animal
 				participants. Datasets used for training machine learning models
 				in this paper are acquired from open access datasets.</p>
+			</div>
 
 		<div><b>❍ Acknowledgments</b> 
 		<p>This work is funded by UK Research and Innovation [grant number EP/S022694/1] as part of the “UKRI Centre for Doctoral Training in Artificial Intelligence and Music”.</p>
-		
+	</div>
 	</body>
 	
 
