@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>The drum machine of Tao ☯️</title>
+		<title>The drum machine of Tao ☯︎ </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			div {
 			margin-bottom: 32px;
@@ -13,6 +14,10 @@
 				padding-right: 20px;
 			}
 
+			th {
+				
+				font-weight: normal;
+			}
 			
 			#toc_container {
 			background: #f9f9f9 none repeat scroll 0 0;
@@ -47,6 +52,13 @@
 			font-style: italic;
 			color: #666666;
 		  }
+		  audio {
+      width: 100%;
+      max-width: 100%;
+	  min-width: 130px;
+
+     
+    }
 			
 		</style>
 	</head>
@@ -54,7 +66,7 @@
 	<body>
 		<article>
 			<header>
-				<h1>The Drum Machine of Tao</h1>
+				<h1>The Drum Machine of Tao ☯︎</h1>
 			</header>
 		</article>
 		
@@ -70,70 +82,454 @@
 		</div>
 		
 		<div>
-			<b>Abstract: </b>The Drum Machine of Tao <i>Tao</i> is a machine learning-based digital system that returns a sampled drum loop in audio waveform to sequencer parameters and one-shot percussive samples, restoring low-level editability to the drum loops that would otherwise be frozen once sampled. The philosophy behind the design of this drum machine is inspired from Taoism - that which returns to its primal state is the great Way of Tao. In this paper, we introduce the system design of <i>Tao</i> which comprises a state-of-the-art drum source separation model, a sequencer parameter estimation model, and a bespoke one-shot sample extraction algorithm that leverages differentiable audio synthesis.
-			<p></p>
+			<b>Abstract: </b> <i>Tao</i> is a machine learning-based digital system that returns a sampled drum loop in audio waveform to sequencer parameters and one-shot percussive samples, restoring low-level editability to the drum loops that would otherwise be frozen once sampled. The philosophy behind the design of this drum machine is inspired from Taoism - that which returns to its primal state is the great Way of Tao. In this paper, we introduce the system design of <i>Tao</i> which comprises a state-of-the-art drum source separation model, a sequencer parameter estimation model, and a bespoke one-shot sample extraction algorithm that leverages differentiable audio synthesis.
+			
+			<p style="font-weight: bold;"> 
+				The actual interface of <i>Tao</i> is under construction, you are invited to imagine an interactive web-based regular drum machine + sequencer interface which probably looks like <a href="https://roland50.studio/">this</a>, but with an additional ⇪drum loop audio file upload section⇪.
+			</p>
+			<p style="font-weight: bold;">See below for examples of the raw output of drum loops processed/rigged by <i>Tao</i>. </p>
+			<h4>✻ Example I:</h4>
+			<p style="font-weight: bold;">input:</p>
+				<table>
+					<tr>
+						<th> a drum loop </th>
+					</tr>
+					<tr>
+						<td><audio controls preload="none"><source src="wavs/loop111/loop111_bpm190.wav"></audio></td>
+					</tr>
+					<tr>
+						<th></th>
+					</tr>
+				</table>
+				<p style="font-weight: bold;"><i>Tao</i> output: </p>
+			
 			<table>
 				<tbody>
-				  <tr>
-					<th>input drum loop</th>
-					<th>extracted kick</th>
-					<th>extracted snare</th>
-					<th>extracted hihats</th>
+					<tr>
+						<th>est. tempo: </th>
+						<td style="font-weight: bold; text-align: left;"> 190</td>
+					  </tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					<th></th>
+					<th>extracted one-shot sample</th>
+					<th>estimated step vector</th>
 				  </tr>
 				  <tr>
-					<td><audio controls preload="none"><source src="wavs/abstract/styletts2.mp3"></audio></td>
-					<td><audio controls preload="none"><source src="wavs/abstract/jets.mp3"></audio></td>
-					<td><audio controls preload="none"><source src="wavs/abstract/vits.mp3"></audio></td>
-					<td><audio controls preload="none"><source src="wavs/abstract/styletts.mp3"></audio></td>
+					<th><i>kick:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop111/kick_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ○ ○ ○ ● ○ ○ ○</td>
 				  </tr>
+
+				  <tr>
+					<th><i>snare:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop111/snare_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">○ ○ ○ ○ ● ● ○ ○</td>
+				  </tr>
+
+				  <tr>
+					<th><i>hihats:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop111/hh_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">○ ● ● ● ● ● ● ●</td>
+				  </tr>
+
+
+
+				  <tr>
+					<th> reconstruction </th>
+					<td><audio controls preload="none"><source src="wavs/loop111/reconstructed_loop.wav"></audio></td>
+				</tr>
+
+
+			  <tr>
+
 				</tbody>
 			</table>
+
+
+
+			<h4>✻✻ Example II:</h4>
+			<p style="font-weight: bold;">input:</p>
+				<table>
+					<tr>
+						<th> a drum loop </th>
+					</tr>
+					<tr>
+						<td><audio controls preload="none"><source src="wavs/loop998/loop998_bpm71.wav"></audio></td>
+					</tr>
+					<tr>
+						<th></th>
+					</tr>
+				</table>
+				<p style="font-weight: bold;"><i>Tao</i> output: </p>
+			
+			<table>
+				<tbody>
+					<tr>
+						<th>est. tempo: </th>
+						<td style="font-weight: bold; text-align: left;"> 71</td>
+					  </tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					<th></th>
+					<th>extracted one-shot sample</th>
+					<th>estimated step vector</th>
+				  </tr>
+				  <tr>
+					<th><i>kick:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop998/kick_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ○ ● ● ○ ○ ○ ○</td>
+				  </tr>
+
+				  <tr>
+					<th><i>snare:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop998/snare_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ● ● ○ ● ● ●</td>
+				  </tr>
+
+				  <tr>
+					<th><i>hihats:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop998/hh_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ○ ○ ● ● ○ ○</td>
+				  </tr>
+
+
+
+				  <tr>
+					<th> reconstruction </th>
+					<td><audio controls preload="none"><source src="wavs/loop998/reconstructed_loop.wav"></audio></td>
+				</tr>
+
+
+			  <tr>
+
+				</tbody>
+			</table>
+
+			<h4>✻✻✻ Example III:</h4>
+			<p style="font-weight: bold;">input:</p>
+				<table>
+					<tr>
+						<th> a drum loop </th>
+					</tr>
+					<tr>
+						<td><audio controls preload="none"><source src="wavs/loop1140/loop1140_bpm159.wav"></audio></td>
+					</tr>
+					<tr>
+						<th></th>
+					</tr>
+				</table>
+				<p style="font-weight: bold;"><i>Tao</i> output: </p>
+			
+			<table>
+				<tbody>
+					<tr>
+						<th>est. tempo: </th>
+						<td style="font-weight: bold; text-align: left;"> 159</td>
+					  </tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					<th></th>
+					<th>extracted one-shot sample</th>
+					<th>estimated step vector</th>
+				  </tr>
+				  <tr>
+					<th><i>kick:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop1140/kick_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ○ ○ ● ○ ○ ○ ○</td>
+				  </tr>
+
+				  <tr>
+					<th><i>snare:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop1140/snare_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ○ ● ● ○ ○ ● ●</td>
+				  </tr>
+
+				  <tr>
+					<th><i>hihats:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop1140/hh_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ● ● ● ● ● ●</td>
+				  </tr>
+
+
+
+				  <tr>
+					<th> reconstruction </th>
+					<td><audio controls preload="none"><source src="wavs/loop1140/reconstructed_loop.wav"></audio></td>
+				</tr>
+			  <tr>
+
+				</tbody>
+			</table>
+
+
+			<h4>✻✻✻✻ Example IV:</h4>
+			<p style="font-weight: bold;">input:</p>
+				<table>
+					<tr>
+						<th> a drum loop </th>
+					</tr>
+					<tr>
+						<td><audio controls preload="none"><source src="wavs/loop30/loop30_bpm100.wav"></audio></td>
+					</tr>
+					<tr>
+						<th></th>
+					</tr>
+				</table>
+				<p style="font-weight: bold;"><i>Tao</i> output: </p>
+			
+			<table>
+				<tbody>
+					<tr>
+						<th>est. tempo: </th>
+						<td style="font-weight: bold; text-align: left;"> 100</td>
+					  </tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					<th></th>
+					<th>extracted one-shot sample</th>
+					<th>estimated step vector</th>
+				  </tr>
+				  <tr>
+					<th><i>kick:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop30/kick_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ● ● ● ● ● ●</td>
+				  </tr>
+
+				  <tr>
+					<th><i>snare:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop30/snare_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">○ ○ ○ ● ○ ○ ○ ●</td>
+				  </tr>
+
+				  <tr>
+					<th><i>hihats:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop30/hh_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ● ● ● ● ● ●</td>
+				  </tr>
+
+
+
+				  <tr>
+					<th> reconstruction </th>
+					<td><audio controls preload="none"><source src="wavs/loop30/reconstructed_loop.wav"></audio></td>
+				</tr>
+			  <tr>
+
+				</tbody>
+			</table>
+
+			<h4>✻✻✻✻✻ Example V:</h4>
+			<p style="font-weight: bold;">input:</p>
+				<table>
+					<tr>
+						<th> a drum loop </th>
+					</tr>
+					<tr>
+						<td><audio controls preload="none"><source src="wavs/loop1798/loop1798_bpm180.wav"></audio></td>
+					</tr>
+					<tr>
+						<th></th>
+					</tr>
+				</table>
+				<p style="font-weight: bold;"><i>Tao</i> output: </p>
+			
+			<table>
+				<tbody>
+					<tr>
+						<th>est. tempo: </th>
+						<td style="font-weight: bold; text-align: left;"> 180</td>
+					  </tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					  <tr><td></td></tr>
+					<th></th>
+					<th>extracted one-shot sample</th>
+					<th>estimated step vector</th>
+				  </tr>
+				  <tr>
+					<th><i>kick:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop1798/kick_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ○ ○ ○ ● ○ ○ ○</td>
+				  </tr>
+
+				  <tr>
+					<th><i>snare:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop1798/snare_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ○ ● ○ ○ ● ●</td>
+				  </tr>
+
+				  <tr>
+					<th><i>hihats:</i></th>
+					<td><audio controls preload="none"><source src="wavs/loop1798/hh_one_shot.wav"></audio></td>
+					<td style="font-size: 30px;">● ● ● ● ● ○ ● ●</td>
+				  </tr>
+
+
+
+				  <tr>
+					<th> reconstruction </th>
+					<td><audio controls preload="none"><source src="wavs/loop1798/reconstructed_loop.wav"></audio></td>
+				</tr>
+			  <tr>
+
+				</tbody>
+			</table>
+
+
 		</div>
 		
-		<div>
-			<p>This page contains a set of audio samples in support of the paper. Some examples are randomly selected directly from the sets we used for evaluation. </p>
-			<p>All one-shot samples were unseen during training. </p>
-		</div>
+
 		
 		
-		<h2>Contents</h2>
+		<h3>Computational evaluation</h3>
 			<div id="toc_container" style="padding-top:0px;">
+				<div>
+					<p>There are different metrics for different components as each component in <i>Tao</i> handles a different subproblem.</p>
+					<p>We have synthesized two testing drum loops sets fom <a href="https://zenodo.org/records/4687854">Freesound One-Shot Percussive Sounds</a> - a random-rhythm testing set and a prior-rhythm testing set.  </p>
+					<p><b>Random-rhythm</b> testing set (<i>Random</i>): the testing set synthesized using randomly sampled step vectors following no prior rhythmic patterns.</p>
+					<p><b>Prior-rhythm</b> testing set (<i>Prior</i>): the testing set synthesized using prior step vector collections (one collection for each percussive track), which are prepared by manual annotation from invited professional drummers and producers. </p>
+					<p>All one-shot samples in the testing set were unseen during training. </p>
+
+
+
+				</div>
 			<ul>
-				<li><a href="#eval-random"> 1. Evaluation results on the random-rhythm testing set
-				<li><a href="#audio-random"> 2. Audio samples from the random-rhythm testing set
-				<li><a href="#eval-prior"> 3. Evaluation results on the prior-rhythm testing set
-				<li><a href="#audio-prior"> 4. Audio samples from the prior-rhythm testing set
-				<li><a href="#audio-real"> 5. Audio samples from non-synthesized drum loops
+				<li><a href="#eval-dss"> 1. Evaluation results of the drum source separation model</a>
+				<li><a href="#eval-tempo"> 2. Evaluation results of the tempo estimation</a>
+				<li><a href="#eval-sv"> 3. Evaluation results of the step vector estimation</a>
+				<li><a href="#eval-oneshot"> 4. Evaluation results of the one-shot sample extraction</a>
 	
 
 			</ul>
 		</div>
 		
 		<div>
-			<a name="eval-random"><h2>1. Evaluation results on the random-rhythm testing set</h2></a>
-			<hr>
-			<p></p>
-			
-			<p><b>Random-rhythm</b> testing set: the testing set synthesized using randomly sampled step vectors following no prior rhythmic patterns.</p>
+
+			<a name="eval-dss"><h4>1. Evaluation results of the drum source separation model</h4></a>
+			<p>We adopt the commonly used Music Source Separation evaluation metrics including the Signal-to-Distortion Ratio (SDR) and the Scale-Invariant Signal-to-Distortion Ratio (SI-SDR).</p>
 			<table>
 				<tbody>
 				  <tr>
-					<th>Input drum loop</th>
-					<th>extracted kick</th>
-					<th>extracted snare</th>
-					<th>extracted hihats</th>
-					<th>reconstruted drum loop</th>
-
+					<th style="font-weight: bold;">Metrics (in dB)</th>
+					<th style="font-weight: bold;">kick</th>
+					<th style="font-weight: bold;">snare</th>
+					<th style="font-weight: bold;">hihats</th>
 				  </tr>
 				  <tr>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/GT/00005.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/StyleTTS2/00005.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/NaturalSpeech/00005.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/JETS/00005.wav"></audio></td>
-					<td><audio controls preload="none" class="id"><source src="wavs/LJSpeech/ID/VITS/00005.wav"></audio></td>
+					<td>SDR (Prior)</td>
+					<td>17.09</td>
+					<td>7.32</td>
+					<td>4.97</td>
+				  </tr>
+				  <tr>
+					<td>SI-SDR (Prior) </td>
+					<td>15.34</td>
+					<td>6.00 </td>
+					<td>2.77</td>
+				  </tr>
+				  <tr>
+					<td>SDR (Random) </td>
+					<td>15.84 </td>
+					<td>8.40 </td>
+					<td>3.60</td>
+				  </tr>
+				  <tr>
+					<td>SI-SDR (Random)</td>
+					<td>14.33</td>
+					<td>7.37</td>
+					<td>0.43</td>
 				  </tr>
 				</tbody>
 			</table>
+
+			<a name="eval-tempo"><h4>2. Evaluation results of the tempo estimation</h4></a>
+			<p>We adopt accuracy metric which is computed if the estimated tempo is within 1% of the groundtruth tempo. </p>
+			<table>
+				<tbody>
+					<tr>
+					<th style="font-weight: bold;">Metrics</th>
+					<th style="font-weight: bold;"></th>
+					</tr>
+				  <tr>
+					<td>Accuracy (Prior)</td>
+					<td>0.995</td>
+
+				  </tr>
+				  <tr>
+					<td>Accuracy (Random)</td>
+					<td>0.999</td>
+
+				  </tr>
+			</table>
+
+			<a name="eval-sv"><h4>3. Evaluation results of the step vector estimation</h4></a>
+			<p>For evaluating the estimated step vectors, we propose to use recall, precision and F-measure metrics considering it being a multi-label binary classification task.</p>
+			<table>
+				<tbody>
+				  <tr>
+					<th style="font-weight: bold;">Metrics</th>
+					<th style="font-weight: bold;">kick</th>
+					<th style="font-weight: bold;">snare</th>
+					<th style="font-weight: bold;">hihats</th>
+				  </tr>
+				  <tr>
+					<td>F-measure(Prior) </td>
+					<td>0.903</td>
+					<td>0.770 </td>
+					<td>0.861</td>
+				  </tr>
+				  <tr>
+					<td>F-measure(Random) </td>
+					<td>0.908</td>
+					<td>0.860</td>
+					<td>0.813</td>
+				  </tr>
+				</tbody>
+			</table>
+
+			<a name="eval-oneshot"><h4>4. Evaluation results of the one-shot sample extraction</h4></a>
+			<p>for evaluating the quality of the extracted one-shot sample waveforms compared to the groundtruth ones used for loop synthesis, we propose to use the SDR and the SI-SDR metrics.</p>
+			<table>
+				<tbody>
+				  <tr>
+					<th style="font-weight: bold;">Metrics (in dB)</th>
+					<th style="font-weight: bold;">kick</th>
+					<th style="font-weight: bold;">snare</th>
+					<th style="font-weight: bold;">hihats</th>
+				  </tr>
+				  <tr>
+					<td>SDR (Prior)</td>
+					<td>48.21 </td>
+					<td>15.23 </td>
+					<td>29.29 </td>
+				  </tr>
+				  <tr>
+					<td>SI-SDR (Prior) </td>
+					<td>40.62 </td>
+					<td>20.31 </td>
+					<td>20.31 </td>
+				  </tr>
+				  <tr>
+					<td>SDR (Random) </td>
+					<td>37.80  </td>
+					<td>33.35 </td>
+					<td>25.36 </td>
+				  </tr>
+				  <tr>
+					<td>SI-SDR (Random)</td>
+					<td>31.47</td>
+					<td>21.98</td>
+					<td>15.42</td>
+				  </tr>
+				</tbody>
+			</table>
+
+
 	
 		</div>
 
